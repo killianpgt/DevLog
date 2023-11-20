@@ -1,0 +1,74 @@
+-- my game : https://www.roblox.com/games/15275437921/Clone-Mouvement-I-Devlog
+-- You need a dummy and change the variable "R6" to set to your dummy, the dummy need to be R6.
+-- my github : https://github.com/killianpgt
+
+local Part = script.Parent
+local R6 = workspace.R6
+local Loop = false
+
+local TableArmLeft = {}
+local TableArmRight = {}
+local TableTorso = {}
+local TableHead = {}
+local TableLegLeft = {}
+local TableLegRight = {}
+
+Part.Touched:Connect(function(hit)
+	
+TableArmLeft = {}
+TableArmRight = {}
+TableTorso = {}
+TableHead = {}
+TableLegLeft = {}
+TableLegRight = {}
+	
+	if game.Players:GetPlayerFromCharacter(hit.Parent) then
+		
+		Loop = true
+		
+		while wait() do
+			
+			if Loop == true then
+			
+			local Character = hit.Parent
+			
+			table.insert(TableArmLeft, Character["Left Arm"].CFrame)
+			table.insert(TableArmRight, Character["Right Arm"].CFrame)
+			table.insert(TableTorso, Character["Torso"].CFrame)
+			table.insert(TableHead, Character["Head"].CFrame)
+			table.insert(TableLegLeft, Character["Left Leg"].CFrame)
+			table.insert(TableLegRight, Character["Right Leg"].CFrame)
+				
+			else
+				break
+			end
+			
+		end
+		
+	end
+	
+end)
+
+local PartEnd = workspace.End
+
+PartEnd.Touched:Connect(function(hit)
+	
+	if game.Players:GetPlayerFromCharacter(hit.Parent) then
+		
+		Loop = false
+		
+		for i=1, #TableArmLeft do
+			
+			R6["Left Arm"].CFrame = TableArmLeft[i]
+			R6["Left Leg"].CFrame = TableLegLeft[i]
+			R6["Right Arm"].CFrame = TableArmRight[i]
+			R6["Right Leg"].CFrame = TableLegRight[i]
+			R6["Torso"].CFrame = TableTorso[i]
+			R6["Head"].CFrame = TableHead[i]
+			wait()
+			
+		end
+		
+	end
+	
+end)
