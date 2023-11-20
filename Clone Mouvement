@@ -2,8 +2,8 @@
 -- You need a dummy and change the variable "R6" to set to your dummy, the dummy need to be R6.
 -- my github : https://github.com/killianpgt
 
-local Part = script.Parent
-local R6 = workspace.R6
+local Part = script.Parent -- place the script in a part
+local R6 = workspace.R6 -- set your dummy here
 local Loop = false
 
 local TableArmLeft = {}
