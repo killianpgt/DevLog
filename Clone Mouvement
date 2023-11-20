@@ -49,7 +49,7 @@ TableLegRight = {}
 	
 end)
 
-local PartEnd = workspace.End
+local PartEnd = workspace.End -- set your part end here
 
 PartEnd.Touched:Connect(function(hit)
 	
